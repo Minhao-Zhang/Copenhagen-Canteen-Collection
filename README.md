@@ -1,14 +1,14 @@
 # Copenhagen-Canteen-Collection
 
-A small program that organizes most of the University canteen menu information for the use of university students
+A small program that organizes most of the university canteen menu information for the use of university students
 
 ## TODO
 
 - [ ] Scrape the menu information from KU canteens
-  - [ ] KU Frederiksberg Campus
-  - [ ] KU Nørre Campus
+  - [x] KU Frederiksberg Campus
+  - [x] KU Nørre Campus
   - [x] KU Søndre Campus
-  - [ ] KU Geocenter - City
+  - [x] KU Geocenter - City
   - [ ] KU Gamle - Taastrup
   - [x] KU Skovskolen
 - [ ] Scrape the menu information from CBS canteens
@@ -20,6 +20,9 @@ A small program that organizes most of the University canteen menu information f
   - [ ] CBS Graduate House
 - [ ] Build a website that displays the menu information
 - [ ] Automate the process of scraping and updating the website
+- [ ] Add machine translation into some part of the program to translate Danish into English
+  - [ ] Maybe add a feature that allows users to choose the language they want to see
+  - [ ] Maybe add Chinese Support
 
 ## Building on your own
 
