@@ -9,7 +9,7 @@ A small program that organizes most of the university canteen menu information f
   - [x] KU Nørre Campus
   - [x] KU Søndre Campus
   - [x] KU Geocenter - City
-  - [ ] KU Gamle - Taastrup
+  - [x] KU Gamle - Taastrup
   - [x] KU Skovskolen
 - [ ] Scrape the menu information from CBS canteens
   - [ ] CBS Solbjerg Plads
@@ -24,7 +24,7 @@ A small program that organizes most of the university canteen menu information f
   - [ ] Maybe add a feature that allows users to choose the language they want to see
   - [ ] Maybe add Chinese Support
 
-## Building on your own
+## Build on your own
 
 Requirements:
 
