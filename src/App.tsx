@@ -1,12 +1,9 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import info from "../data/KU_BIO_CENTERET.json";
 
 function App() {
-  let time = new Date().toLocaleTimeString();
-  console.log(time);
-  let res = time.toString();
-
   return (
     <>
       <div>
@@ -19,7 +16,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        {res}
+        {info.Friday}
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
