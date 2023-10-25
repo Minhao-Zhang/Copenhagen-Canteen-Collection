@@ -1,5 +1,5 @@
 import React from "react";
-import * as menu from "../Components/load_menu";
+// import * as menu from "../Components/load_menu";
 import NavigationBar from "../Components/NavigationBar";
 
 interface EmptyProps {}
