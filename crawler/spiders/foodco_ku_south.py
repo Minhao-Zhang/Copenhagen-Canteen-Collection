@@ -47,7 +47,6 @@ class KUSouthCampusCanteen(scrapy.Spider):
 
         # one of the weekday format in fol_result is wrong, we fix it
         onsdag_index = fol_result.index("onsdag")
-        print(onsdag_index)
         if (onsdag_index != -1):
             fol_result[onsdag_index] = "Onsdag"
 
@@ -58,7 +57,7 @@ class KUSouthCampusCanteen(scrapy.Spider):
         with codecs.open(DATA_PATH + "HUM_KANTIEN.txt", "w", "utf-8") as f:
             for line in hum_result:
                 f.write(line + "\n")
-        with codecs.open(DATA_PATH + "FOLKEKOKKEN.txt", "w", "utf-8") as f:
+        with codecs.open(DATA_PATH + "FOLKEKØKKEN.txt", "w", "utf-8") as f:
             for line in fol_result:
                 f.write(line + "\n")
         with codecs.open(DATA_PATH + "TEO.txt", "w", "utf-8") as f:
@@ -72,9 +71,11 @@ class KUSouthCampusCanteen(scrapy.Spider):
         # SOME_LINES
         # ...
         # so we parse them into json file by each day
-        def split_and_store(result: list[str]) -> str:
+        def split_and_store(result: list[str], name: str) -> str:
             indexes = [result.index(day) for day in WEEKDAYS_DANISH]
             result_dict = {}
+            result_dict["Name"] = name
+            result_dict["WeekNumber"] = result[1].split(" ")[-1]
             for i in range(len(indexes) - 1):
                 day = WEEKDAYS[i]
                 result_dict[day] = "\n".join(
@@ -84,17 +85,17 @@ class KUSouthCampusCanteen(scrapy.Spider):
 
             return result_json
 
-        jur_json = split_and_store(jur_result)
-        hum_json = split_and_store(hum_result)
-        fol_json = split_and_store(fol_result)
-        ted_json = split_and_store(teo_result)
+        jur_json = split_and_store(jur_result, "JUR_KANTIEN")
+        hum_json = split_and_store(hum_result, "HUM_KANTIEN")
+        fol_json = split_and_store(fol_result[2:], "FOLKEKOKKEN")
+        ted_json = split_and_store(teo_result, "TEO")
 
         # store the json file
         with codecs.open(DATA_PATH + "JUR_KANTIEN.json", "w", "utf-8") as f:
             f.write(jur_json)
         with codecs.open(DATA_PATH + "HUM_KANTIEN.json", "w", "utf-8") as f:
             f.write(hum_json)
-        with codecs.open(DATA_PATH + "FOLKEKOKKEN.json", "w", "utf-8") as f:
+        with codecs.open(DATA_PATH + "FOLKEKØKKEN.json", "w", "utf-8") as f:
             f.write(fol_json)
         with codecs.open(DATA_PATH + "TEO.json", "w", "utf-8") as f:
             f.write(ted_json)

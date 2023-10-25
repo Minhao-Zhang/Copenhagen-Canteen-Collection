@@ -44,6 +44,8 @@ class KUGeoCenterCampusCityCanteen(scrapy.Spider):
         def split_and_store(result: list[str]) -> str:
             indexes = [result.index(day) for day in WEEKDAYS]
             result_dict = {}
+            result_dict["Name"] = "GEOCENTER_CITY"
+            result_dict["WeekNumber"] = result[0].split(" ")[-1]
             for i in range(len(indexes) - 1):
                 day = WEEKDAYS[i]
                 result_dict[day] = "\n".join(

@@ -5,7 +5,9 @@ import scrapy
 
 DATA_PATH = "data/KU_"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+WEEKDAYS_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri"]
 WEEKDAYS_DANISH = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag"]
+WEEKDAYS_DANISH_SHORT = ["Man", "Tir", "Ons", "Tor", "Fre"]
 
 
 class KUFrederiksbergCampusCanteen(scrapy.Spider):
@@ -47,20 +49,33 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
             for line in gim_result:
                 f.write(line + "\n")
 
-        # we now know the result are in the format of
+        gum_json = self.parse_gum(gum_result)
+        gim_json = self.parse_gim(gim_result)
+
+        # store the json file
+        with codecs.open(DATA_PATH + "GUMLE_KANTINE.json", "w", "utf-8") as f:
+            f.write(gum_json)
+        with codecs.open(DATA_PATH + "GIMLE_KANTINE.json", "w", "utf-8") as f:
+            f.write(gim_json)
+
+    def parse_gum(self, result: list[str]) -> str:
         # GUMLE KANTINE
         # WEEK_NUMBER
         # Mandag: DANISH_MENU
         # Monday: ENGLISH_MENU
         # ...
-        # we parse them into json file by each day
 
-        gum_dict = {}
+        result_dict = {}
+        result_dict["Name"] = "GUMLE_KANTINE"
+        result_dict["WeekNumber"] = result[1].split(" ")[-1]
         for i in range(5):
-            gum_dict[WEEKDAYS[i]] = gum_result[2+i*2][len(
-                WEEKDAYS_DANISH[i])+2:] + "\n" + gum_result[3+i*2][len(WEEKDAYS[i])+2:]
-        gum_json = json.dumps(gum_dict, ensure_ascii=False)
+            result_dict[WEEKDAYS[i]] = result[2+i*2][len(
+                WEEKDAYS_DANISH[i])+2:] + "\n" + result[3+i*2][len(WEEKDAYS[i])+2:]
+        result_json = json.dumps(result_dict, ensure_ascii=False)
 
+        return result_json
+
+    def parse_gim(self, result: list[str]) -> str:
         # GIMLE KANTINE
         # WEEK_NUMBER
         # Monday: ENGLISH_MENU
@@ -68,30 +83,26 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
         # ...
         # Forbehold for ændringer (subject to change at the end)
 
-        # we parse them into json file by each day
-
-        gim_dict = {}
+        result_dict = {}
+        result_dict["Name"] = "GIMLE_KANTINE"
+        result_dict["WeekNumber"] = result[1].split(" ")[-1]
         start_index = []
         for i in range(5):
             # find the line number if they start with a weekday
-            for j in range(len(gim_result)):
-                if gim_result[j].startswith(WEEKDAYS[i]):
+            for j in range(len(result)):
+                if result[j].startswith(WEEKDAYS_SHORT[i]):
                     start_index.append(j)
                     break
-        start_index.append(len(gim_result) - 1)
+        start_index.append(len(result) - 1)
         for i in range(5):
             temp = ""
             for j in range(start_index[i], start_index[i+1]):
-                if gim_result[j].startswith(WEEKDAYS[i]):
-                    temp += gim_result[j][len(WEEKDAYS[i])+2:] + "\n"
+                if result[j].startswith(WEEKDAYS_SHORT[i]):
+                    temp += result[j][len(WEEKDAYS[i])+2:] + "\n"
                 else:
-                    temp += gim_result[j] + "\n"
+                    temp += result[j] + "\n"
             temp = temp[:len(temp)-1]
-            gim_dict[WEEKDAYS[i]] = temp
-        gim_json = json.dumps(gim_dict, ensure_ascii=False)
+            result_dict[WEEKDAYS[i]] = temp
+        result_json = json.dumps(result_dict, ensure_ascii=False)
 
-        # store the json file
-        with codecs.open(DATA_PATH + "GUMLE_KANTINE.json", "w", "utf-8") as f:
-            f.write(gum_json)
-        with codecs.open(DATA_PATH + "GIMLE_KANTINE.json", "w", "utf-8") as f:
-            f.write(gim_json)
+        return result_json

@@ -44,6 +44,8 @@ class KUTaastrupCampusCanteen(scrapy.Spider):
         # we parse them into json file by each day
 
         taa_dict = {}
+        taa_dict["Name"] = "TAASTRUP"
+        taa_dict["WeekNumber"] = result[0].split(" ")[-1]
         for i in range(5):
             taa_dict[WEEKDAYS[i]] = result[1+i*2][len(
                 WEEKDAYS_DANISH[i])+2:] + "\n" + result[2+i*2][len(WEEKDAYS[i])+2:]
