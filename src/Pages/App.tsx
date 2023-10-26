@@ -1,5 +1,4 @@
 import React from "react";
-// import * as menu from "../Components/load_menu";
 import NavigationBar from "../Components/NavigationBar";
 
 interface EmptyProps {}
@@ -18,13 +17,6 @@ class App extends React.Component<EmptyProps, EmptyStats> {
         <NavigationBar />
       </div>
     );
-  }
-
-  parseJSONWithNewlines(jsonData: string) {
-    const parsedText = jsonData
-      .split("\n")
-      .map((line, index) => <p key={index}>{line}</p>);
-    return parsedText;
   }
 }
 

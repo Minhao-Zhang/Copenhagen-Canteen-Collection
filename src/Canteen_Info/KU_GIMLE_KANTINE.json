@@ -1,11 +1,11 @@
 {
   "Name": "GIMLE_KANTINE",
-  "DisplayName": "",
-  "Lat": ,
-  "Lon": ,
+  "DisplayName": "Gimble Kantine",
+  "Lat": 55.67899,
+  "Lon": 12.53949,
   "Price": "",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "",
-  "Hours": ""
+  "Address": "Dyrlægevej 7, 1870 Frederiksberg C",
+  "Hours": "Weekday 7:45-14:30, Lunch buffet 11:00-14:00"
 }

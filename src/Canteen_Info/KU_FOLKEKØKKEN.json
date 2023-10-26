@@ -1,11 +1,11 @@
 {
-  "Name": "FOLKEKOKKEN",
-  "DisplayName": "",
+  "Name": "FOLKEKØKKEN",
+  "DisplayName": "Folkekøkken",
   "Lat": 55.66299,
   "Lon": 12.58934,
   "Price": "Small: 48kr / Large: 60kr",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "Building 13B",
-  "Hours": "Monday-Friday, 11 a.m. - 2 p.m."
+  "Address": "South Campus Building 13B",
+  "Hours": "Weekday 11:00-14:00"
 }

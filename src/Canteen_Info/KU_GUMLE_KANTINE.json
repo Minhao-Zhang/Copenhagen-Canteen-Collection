@@ -1,11 +1,11 @@
 {
   "Name": "GUMLE_KANTINE",
-  "DisplayName": "",
-  "Lat": ,
-  "Lon": ,
+  "DisplayName": "Gumle Kantine",
+  "Lat": 55.68176,
+  "Lon": 12.54305,
   "Price": "",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "",
-  "Hours": ""
+  "Address": "Thorvaldsensvej 40, 1870 Frederiksberg C",
+  "Hours": "Weekday 7:45-14:30, Lunch buffet 11:00-14:00"
 }

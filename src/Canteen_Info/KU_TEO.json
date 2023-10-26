@@ -1,11 +1,11 @@
 {
   "Name": "TEO",
-  "DisplayName": "",
-  "Lat": 55.66156,
-  "Lon": 12.58777,
+  "DisplayName": "TEO Kantinen",
+  "Lat": 55.66178,
+  "Lon": 12.58712,
   "Price": "",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "",
-  "Hours": ""
+  "Address": "Karen Blixens Vej 16, 2300 København",
+  "Hours": "Weekday 11:00-14:00"
 }

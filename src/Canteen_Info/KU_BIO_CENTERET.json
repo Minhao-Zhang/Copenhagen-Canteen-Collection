@@ -1,11 +1,11 @@
 {
   "Name": "BIO_CENTERET",
-  "DisplayName": "",
-  "Lat": ,
-  "Lon": ,
+  "DisplayName": "Biocenteret Kantinen",
+  "Lat": 55.69979,
+  "Lon": 12.55756,
   "Price": "",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "",
-  "Hours": ""
+  "Address": "Ole Maaløes Vej 5, 2200 Copenhagen N",
+  "Hours": "Weekday 7:30-14:00"
 }

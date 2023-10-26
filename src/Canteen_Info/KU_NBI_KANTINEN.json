@@ -1,11 +1,11 @@
 {
   "Name": "NBI_KANTINEN",
-  "DisplayName": "",
-  "Lat": ,
-  "Lon": ,
+  "DisplayName": "NBI Kantinen",
+  "Lat": 55.697,
+  "Lon": 12.57158,
   "Price": "",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "",
-  "Hours": ""
+  "Address": "Blegdamsvej 17, 100 Copenhagen Ø",
+  "Hours": "Weekday 7:30-14:45, Breakfast 7:30-10:00, Lunch 11:30-13:30"
 }

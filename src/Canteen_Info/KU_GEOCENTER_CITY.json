@@ -1,11 +1,11 @@
 {
   "Name": "GEOCENTER_CITY",
-  "DisplayName": "",
+  "DisplayName": "Geo Center Kantinen",
   "Lat": 55.68814,
   "Lon": 12.58178,
-  "Price": "",
+  "Price": "105kr/kg",
   "LastUpdate": "",
   "Directions": "",
-  "Address": "",
-  "Hours": ""
+  "Address": "Øster Voldgade 10, 1350 København",
+  "Hours": "Weekday 11:00-14:00 \n YOU NEED TO BE GEOLOGY STUDENT TO ENTER HERE"
 }

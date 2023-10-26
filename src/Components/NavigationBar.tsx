@@ -12,17 +12,41 @@ function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#/map">Map</Nav.Link>
-            <NavDropdown title="KU Søndre Campus" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#/canteens/wicked-rabbit-jur">
+            <NavDropdown title="KU Søndre" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#/canteens/jur">
                 Wicked Rabbit - JUR
               </NavDropdown.Item>
-              <NavDropdown.Item href="#/canteens/wicked-rabbit-hum">
+              <NavDropdown.Item href="#/canteens/hum">
                 Wicked Rabbit - HUM
               </NavDropdown.Item>
               <NavDropdown.Item href="#/canteens/folkekokken">
                 Folke Køkken
               </NavDropdown.Item>
-              <NavDropdown.Item href="#/canteens/teo">TEO</NavDropdown.Item>
+              <NavDropdown.Item href="#/canteens/teo">
+                TEO Kantinen
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="KU Nørre" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#/canteens/hco">
+                HCØ Kantinen
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#/canteens/bio">
+                Biocenteret Kantinen
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#/canteens/nbi">
+                NBI Kantinen
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="KU Others" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#/canteens/gam">
+                Gamble Taastrup
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#/canteens/gim">
+                Gimle Kantine
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#/canteens/gum">
+                Gumble Kantine
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

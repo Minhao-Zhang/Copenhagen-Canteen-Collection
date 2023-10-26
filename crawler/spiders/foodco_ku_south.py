@@ -51,10 +51,10 @@ class KUSouthCampusCanteen(scrapy.Spider):
             fol_result[onsdag_index] = "Onsdag"
 
         # write to a file in UTF-8
-        with codecs.open(DATA_PATH + "JUR_KANTIEN.txt", "w", "utf-8") as f:
+        with codecs.open(DATA_PATH + "JUR_KANTINEN.txt", "w", "utf-8") as f:
             for line in jur_result:
                 f.write(line + "\n")
-        with codecs.open(DATA_PATH + "HUM_KANTIEN.txt", "w", "utf-8") as f:
+        with codecs.open(DATA_PATH + "HUM_KANTINEN.txt", "w", "utf-8") as f:
             for line in hum_result:
                 f.write(line + "\n")
         with codecs.open(DATA_PATH + "FOLKEKØKKEN.txt", "w", "utf-8") as f:
@@ -91,9 +91,9 @@ class KUSouthCampusCanteen(scrapy.Spider):
         ted_json = split_and_store(teo_result, "TEO")
 
         # store the json file
-        with codecs.open(DATA_PATH + "JUR_KANTIEN.json", "w", "utf-8") as f:
+        with codecs.open(DATA_PATH + "JUR_KANTINEN.json", "w", "utf-8") as f:
             f.write(jur_json)
-        with codecs.open(DATA_PATH + "HUM_KANTIEN.json", "w", "utf-8") as f:
+        with codecs.open(DATA_PATH + "HUM_KANTINEN.json", "w", "utf-8") as f:
             f.write(hum_json)
         with codecs.open(DATA_PATH + "FOLKEKØKKEN.json", "w", "utf-8") as f:
             f.write(fol_json)
