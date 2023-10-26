@@ -2,6 +2,8 @@ import React from "react";
 import NavigationBar from "../Components/NavigationBar";
 import "./Map.css";
 import "leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MENUS from "../Components/load_menu";
 import LOCATIONS from "../Components/load_canteen";
