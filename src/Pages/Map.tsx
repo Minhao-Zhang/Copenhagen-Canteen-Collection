@@ -2,10 +2,20 @@ import React from "react";
 import NavigationBar from "../Components/NavigationBar";
 import "./Map.css";
 import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MENUS from "../Components/load_menu";
 import LOCATIONS from "../Components/load_canteen";
+import L from "leaflet";
+
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const NAMES = [
   "KU_BIO_CENTERET",
