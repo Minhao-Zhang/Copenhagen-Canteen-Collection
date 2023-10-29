@@ -9,6 +9,7 @@ import L from "leaflet";
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { Toast } from "react-bootstrap";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -56,43 +57,68 @@ class Map extends React.Component<EmptyProps, EmptyStats> {
       3: "Wednesday",
       4: "Thursday",
       5: "Friday",
+      6: "Saturday",
+      7: "Sunday",
+      0: "Sunday",
     };
 
     const weekNumber = Math.ceil(days / 7);
     const weekDay = weekDays[currentDate.getDay()];
+    // const weekDay = "Saturday";
 
-    // write a for loop to add markers
-    for (let i = 0; i < NAMES.length; i++) {
-      const key = NAMES[i];
-      const lat = LOCATIONS[key].Lat;
-      const lon = LOCATIONS[key].Lon;
-      const displayName = LOCATIONS[key].DisplayName;
+    // if it is weekday, display the menu
+    if (weekDay !== "Saturday" && weekDay !== "Sunday") {
+      // write a for loop to add markers
+      for (let i = 0; i < NAMES.length; i++) {
+        const key = NAMES[i];
+        const lat = LOCATIONS[key].Lat;
+        const lon = LOCATIONS[key].Lon;
+        const displayName = LOCATIONS[key].DisplayName;
 
-      let todayMenu = MENUS[key][weekDay];
-      // check whether the menu is up-to-date
-      if (parseInt(MENUS[key].WeekNumber) !== weekNumber) {
-        todayMenu = "No updated menu available";
-      }
-      // check whether the menu exists
-      if (todayMenu === undefined) {
-        todayMenu = "No menu available";
-      }
-      // properly display multi-line menu
-      const menuLines = todayMenu.split("\n");
-      let displayedMenu = [];
-      for (let j = 0; j < menuLines.length; j++) {
-        displayedMenu.push(<div key={j}>{menuLines[j]}</div>);
-      }
+        let todayMenu = MENUS[key][weekDay];
+        // check whether the menu is up-to-date
+        if (parseInt(MENUS[key].WeekNumber) !== weekNumber) {
+          todayMenu = "No updated menu available";
+        }
+        // check whether the menu exists
+        if (todayMenu === undefined) {
+          todayMenu = "No menu available";
+        }
+        // properly display multi-line menu
+        const menuLines = todayMenu.split("\n");
+        let displayedMenu = [];
+        for (let j = 0; j < menuLines.length; j++) {
+          displayedMenu.push(<div key={j}>{menuLines[j]}</div>);
+        }
 
-      // push them into the markers array
-      markers.push(
-        <Marker key={i} position={[lat, lon]}>
-          <Popup>
-            <h5>{displayName}</h5>
-            {displayedMenu}
-          </Popup>
-        </Marker>
-      );
+        // push them into the markers array
+        markers.push(
+          <Marker key={i} position={[lat, lon]}>
+            <Popup>
+              <h5>{displayName}</h5>
+              {displayedMenu}
+            </Popup>
+          </Marker>
+        );
+      }
+    } else {
+      // if it is weekend, display a notice
+
+      for (let i = 0; i < NAMES.length; i++) {
+        const key = NAMES[i];
+        const lat = LOCATIONS[key].Lat;
+        const lon = LOCATIONS[key].Lon;
+        const displayName = LOCATIONS[key].DisplayName;
+        markers.push(
+          <Marker key={i} position={[lat, lon]}>
+            <Popup>
+              <h5>{displayName}</h5>
+              <div>Enjoy your weekend!</div>
+              <div>All the canteens are closed on weekends.</div>
+            </Popup>
+          </Marker>
+        );
+      }
     }
 
     return (

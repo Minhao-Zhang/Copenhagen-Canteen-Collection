@@ -6,6 +6,8 @@ A small program that organizes most of the university canteen menu information f
 
 - [ ] Build a website that displays the menu information
   - [ ] A map where users can see the location of the canteens
+    - [ ] Add a date to the top of the page
+    - [ ] Add a banner to the to of the page on weekends saying that the canteen is closed
   - [ ] A page where users can see the general information and menu information of a specific canteen
   - [ ] A text page where users can see all the menu for a specific day
 - [ ] Automate the process of scraping and updating the website
@@ -26,6 +28,7 @@ A small program that organizes most of the university canteen menu information f
   - [ ] CBS Flintholm
   - [ ] CBS Graduate House
 - [ ] Add machine translation into some part of the program to translate Danish into English
+  - [ ] Add a note saying that which are the machine translation which are real text
   - [ ] Maybe add a feature that allows users to choose the language they want to see
   - [ ] Maybe add Chinese Support
 
