@@ -7,6 +7,7 @@ DATA_PATH = "data/KU_"
 WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 WEEKDAYS_SHORT = ["Mo", "Tu", "We", "Th", "Fr"]
 WEEKDAYS_DANISH = ["MANDAG", "TIRSDAG", "ONSDAG", "TORSDAG", "FREDAG"]
+WEEKDAYS_DANISH_LOW = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag"]
 WEEKDAYS_DANISH_SHORT = ["Man", "Tir", "Ons", "Tor", "Fre"]
 
 
@@ -67,6 +68,7 @@ class KUNorthCampusCanteen(scrapy.Spider):
             f.write(nbi_result_json)
 
     def parse_hco(self, result: list[str]) -> str:
+        print("PARSING HCO RESULT")
         # HCØ KANTINEN
         # WEEK_NUMBER
         # Mandag
@@ -105,6 +107,7 @@ class KUNorthCampusCanteen(scrapy.Spider):
         return result_json
 
     def parse_bio(self, result: list[str]) -> str:
+        print("PARSING BIO RESULT")
         # BIO CENTERET
         # WEEK_NUMBER
         # MONDAY
@@ -126,39 +129,71 @@ class KUNorthCampusCanteen(scrapy.Spider):
         return result_json
 
     def parse_nbi(self, result: list[str]) -> str:
+        print("PARSING NBI RESULT")
         # the scraped format is a bit weird, see txt file more details
 
-        # NBI KANTINEN
-        # WEEK_NUMBER
-        # Mandag: SOME_TEXT
-        # Mandag:
-        # possibly multiple lines
-        # ...
-        # Med forbehold for ændringer
+        try:
+            # NBI KANTINEN
+            # WEEK_NUMBER
+            # Mandag: SOME_TEXT
+            # Mandag:
+            # possibly multiple lines
+            # ...
+            # Med forbehold for ændringer
 
-        # we first remove all the lines that are ends with :
-        result = [line for line in result if not line.endswith(":")]
+            # we first remove all the lines that are ends with :
+            no_colon_result = [
+                line for line in result if not line.endswith(":")]
 
-        indexes = []
-        for i in range(5):
-            for j in range(len(result)):
-                if result[j].startswith(WEEKDAYS_DANISH_SHORT[i]):
-                    indexes.append(j)
-                    break
+            indexes = []
+            for i in range(5):
+                for j in range(len(no_colon_result)):
+                    if no_colon_result[j].startswith(WEEKDAYS_DANISH_SHORT[i]):
+                        indexes.append(j)
+                        break
 
-        indexes.append(len(result) - 1)
-        result_dict = {}
-        result_dict["Name"] = "NBI_KANTINEN"
-        result_dict["WeekNumber"] = result[1].split()[-1]
+            indexes.append(len(no_colon_result) - 1)
+            no_colon_result_dict = {}
+            no_colon_result_dict["Name"] = "NBI_KANTINEN"
+            no_colon_result_dict["WeekNumber"] = no_colon_result[1].split()[-1]
 
-        for i in range(len(indexes) - 1):
-            day = WEEKDAYS[i]
-            temp = "\n".join(
-                result[indexes[i]: indexes[i + 1]])
-            # there is a WEEKDAY_DANISH: in the beginning, we remove it
-            colon_index = temp.index(":")
-            temp = temp[colon_index + 2:]
-            result_dict[day] = temp
-        result_json = json.dumps(result_dict, ensure_ascii=False)
+            for i in range(len(indexes) - 1):
+                day = WEEKDAYS[i]
+                temp = "\n".join(
+                    no_colon_result[indexes[i]: indexes[i + 1]])
+                # there is a WEEKDAY_DANISH: in the beginning, we remove it
+                colon_index = temp.index(":")
+                temp = temp[colon_index + 2:]
+                no_colon_result_dict[day] = temp
 
-        return result_json
+            no_colon_result_json = json.dumps(
+                no_colon_result_dict, ensure_ascii=False)
+            return no_colon_result_json
+        except:
+            # NBI KANTINEN
+            # WEEK_NUMBER
+            # Mandag
+            # SOME_TEXT
+            # ...
+            # Med forbehold for ændringer
+
+            indexes = []
+            for i in range(5):
+                for j in range(len(result)):
+                    if result[j].startswith(WEEKDAYS_DANISH_SHORT[i]):
+                        indexes.append(j)
+                        break
+            indexes.append(len(result) - 1)
+
+            result_dict = {}
+            result_dict["Name"] = "NBI_KANTINEN"
+            result_dict["WeekNumber"] = result[1].split()[-1]
+
+            for i in range(len(indexes) - 1):
+                day = WEEKDAYS[i]
+                result_dict[day] = "\n".join(
+                    result[indexes[i] + 1: indexes[i + 1]])
+            result_json = json.dumps(result_dict, ensure_ascii=False)
+
+            result_json = json.dumps(result_dict, ensure_ascii=False)
+            return result_json

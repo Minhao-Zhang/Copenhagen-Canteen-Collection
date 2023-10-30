@@ -1,4 +1,5 @@
 import codecs
+import datetime
 import json
 import sys
 import scrapy
@@ -36,7 +37,6 @@ class KUGeoCenterCampusCityCanteen(scrapy.Spider):
                 f.write(line + "\n")
 
         # we now know the result of are the same and are in the format of
-        # WEEK_NUMBER
         # Monday
         # SOME_LINES
         # ...
@@ -45,7 +45,13 @@ class KUGeoCenterCampusCityCanteen(scrapy.Spider):
             indexes = [result.index(day) for day in WEEKDAYS]
             result_dict = {}
             result_dict["Name"] = "GEOCENTER_CITY"
-            result_dict["WeekNumber"] = result[0].split(" ")[-1]
+            # result_dict["WeekNumber"] = result[0].split(" ")[-1]
+            # this canteen does not provide week number
+            # we default this to the current week
+
+            week_number = datetime.datetime.today().isocalendar()[1]
+            result_dict["WeekNumber"] = week_number
+
             for i in range(len(indexes) - 1):
                 day = WEEKDAYS[i]
                 result_dict[day] = "\n".join(
