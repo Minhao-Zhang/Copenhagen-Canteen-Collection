@@ -19,7 +19,7 @@ function NavigationBar() {
               <NavDropdown.Item href="#/canteens/hum">
                 Wicked Rabbit - HUM
               </NavDropdown.Item>
-              <NavDropdown.Item href="#/canteens/folkekokken">
+              <NavDropdown.Item href="#/canteens/fol">
                 Folke Køkken
               </NavDropdown.Item>
               <NavDropdown.Item href="#/canteens/teo">

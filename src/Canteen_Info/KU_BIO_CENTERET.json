@@ -3,9 +3,10 @@
   "DisplayName": "Biocenteret Kantinen",
   "Lat": 55.69979,
   "Lon": 12.55756,
-  "Price": "",
+  "Price": "UNKNOWN",
   "LastUpdate": "",
   "Directions": "",
   "Address": "Ole Maaløes Vej 5, 2200 Copenhagen N",
+  "GoogleMapLink": "https://www.google.com/maps/place/Ole+Maal%C3%B8es+Vej+5,+2200+K%C3%B8benhavn/",
   "Hours": "Weekday 7:30-14:00"
 }

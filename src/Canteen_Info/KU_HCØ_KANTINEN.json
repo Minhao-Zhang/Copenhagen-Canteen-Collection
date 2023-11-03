@@ -3,9 +3,10 @@
   "DisplayName": "HCØ Kantinen",
   "Lat": 55.70068,
   "Lon": 12.56121,
-  "Price": "",
+  "Price": "UNKNOWN",
   "LastUpdate": "",
   "Directions": "",
   "Address": "University Park 5, 2100 Copenhagen Ø",
+  "GoogleMapLink": "https://www.google.com/maps/place/55%C2%B042'02.5%22N+12%C2%B033'40.4%22E",
   "Hours": "Weekday 11:00-14:00"
 }

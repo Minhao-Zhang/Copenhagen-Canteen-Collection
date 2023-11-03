@@ -3,9 +3,10 @@
   "DisplayName": "Gamble Taastrup",
   "Lat": 55.6693,
   "Lon": 12.30457,
-  "Price": "",
+  "Price": "UNKNOWN",
   "LastUpdate": "",
   "Directions": "",
   "Address": "Højbakkegård Alle 30, 2630 Taastrup",
+  "GoogleMapLink": "https://www.google.com/maps/place/55%C2%B040'09.5%22N+12%C2%B018'16.5%22E",
   "Hours": "UNKNOWN"
 }

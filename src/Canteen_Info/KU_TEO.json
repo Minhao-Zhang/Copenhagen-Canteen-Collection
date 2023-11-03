@@ -3,9 +3,10 @@
   "DisplayName": "TEO Kantinen",
   "Lat": 55.66178,
   "Lon": 12.58712,
-  "Price": "",
+  "Price": "UNKNOWN",
   "LastUpdate": "",
   "Directions": "",
   "Address": "Karen Blixens Vej 16, 2300 København",
+  "GoogleMapLink": "https://www.google.com/maps/place/Karen+Blixens+Vej+16,+2300+K%C3%B8benhavn/",
   "Hours": "Weekday 11:00-14:00"
 }

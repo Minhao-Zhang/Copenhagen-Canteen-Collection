@@ -3,9 +3,10 @@
   "DisplayName": "NBI Kantinen",
   "Lat": 55.697,
   "Lon": 12.57158,
-  "Price": "",
+  "Price": "UNKNOWN",
   "LastUpdate": "",
   "Directions": "",
   "Address": "Blegdamsvej 17, 100 Copenhagen Ø",
+  "GoogleMapLink": "https://www.google.com/maps/place/Niels+Bohr+Institutet,+Blegdamsvej+17,+100,+2100+K%C3%B8benhavn",
   "Hours": "Weekday 7:30-14:45, Breakfast 7:30-10:00, Lunch 11:30-13:30"
 }

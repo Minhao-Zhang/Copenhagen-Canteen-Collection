@@ -2,17 +2,21 @@
 
 A small program that organizes most of the university canteen menu information for the use of university students
 
+## Collaboration
+
+I am actively looking for collaborations. If you want to join this project, please contact me at [my email](mailto:z.minhao.01+coding@gmail.com) or create a pull request!
+
 ## TODO
 
 - [ ] Build a website that displays the menu information
   - [ ] A map where users can see the location of the canteens
     - [ ] Add a date to the top of the page
-    - [ ] Add a banner to the to of the page on weekends saying that the canteen is closed
-  - [ ] A page where users can see the general information and menu information of a specific canteen
-  - [ ] A text page where users can see all the menu for a specific day
+    - [x] Add a banner to the to of the page on weekends saying that the canteen is closed
+  - [x] A page where users can see the general information and menu information of a specific canteen
+  - [x] A text page where users can see all the menu for a specific day
 - [ ] Automate the process of scraping and updating the website
   - [x] Fix bugs that comes from ill-formatted website
-    - [x] The format of the website is not consistent with lots of typos. Thus, it is harder for me to scrape the information
+  - [ ] The format of the website is not consistent with lots of typos. Thus, it is harder for me to scrape the information and I need to constantly add possible scrapers
 - [x] Scrape the menu information from KU canteens
   - [x] KU Frederiksberg Campus
   - [x] KU Nørre Campus
