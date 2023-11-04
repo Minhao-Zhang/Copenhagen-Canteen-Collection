@@ -43,7 +43,12 @@ class CanteenTemplate extends React.Component<CanteenProps, CanteenStates> {
     }
 
     // if menu is empty, display "Menu is not available"
-    let thisWeekMenu = <p>Menu is not available</p>;
+    let thisWeekMenu = (
+      <p>
+        Menu is not available at the moment for this week, please check again
+        later!
+      </p>
+    );
     // if menu is available, display the menu
     if (!menuUnavailable) {
       const monfri = this.getMondayAndFridayThisWeek();

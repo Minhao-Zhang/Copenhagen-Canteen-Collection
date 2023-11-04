@@ -16,8 +16,8 @@ class FOL extends React.Component<EmptyProps, EmptyStats> {
   render() {
     return (
       <CanteenTemplate
-        canteenInfo={canteenData.KU_TEO}
-        menuInfo={menuData.KU_TEO}
+        canteenInfo={canteenData.KU_FOLKEKOKKEN}
+        menuInfo={menuData.KU_FOLKEKOKKEN}
       />
     );
   }
