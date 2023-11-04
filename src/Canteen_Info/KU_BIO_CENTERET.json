@@ -1,6 +1,7 @@
 {
   "Name": "BIO_CENTERET",
   "DisplayName": "Biocenteret Kantinen",
+  "Short": "bio",
   "Lat": 55.69979,
   "Lon": 12.55756,
   "Price": "UNKNOWN",

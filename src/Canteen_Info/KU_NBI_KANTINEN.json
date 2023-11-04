@@ -1,6 +1,7 @@
 {
   "Name": "NBI_KANTINEN",
   "DisplayName": "NBI Kantinen",
+  "Short": "nbi",
   "Lat": 55.697,
   "Lon": 12.57158,
   "Price": "UNKNOWN",

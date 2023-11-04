@@ -16,8 +16,8 @@ class HUM extends React.Component<EmptyProps, EmptyStats> {
   render() {
     return (
       <CanteenTemplate
-        canteenInfo={canteenData.KU_JUR_KANTINEN}
-        menuInfo={menuData.KU_JUR_KANTINEN}
+        canteenInfo={canteenData.KU_HUM_KANTINEN}
+        menuInfo={menuData.KU_HUM_KANTINEN}
       />
     );
   }

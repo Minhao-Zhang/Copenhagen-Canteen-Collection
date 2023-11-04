@@ -7,7 +7,7 @@ function NavigationBar() {
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand href="/">CCC</Navbar.Brand>
+        <Navbar.Brand href="/Copenhagen-Canteen-Collection/">CCC</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -38,6 +38,9 @@ function NavigationBar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="KU Others" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#/canteens/geo">
+                Geo Center Kantinen
+              </NavDropdown.Item>
               <NavDropdown.Item href="#/canteens/gam">
                 Gamble Taastrup
               </NavDropdown.Item>

@@ -27,7 +27,8 @@ class App extends React.Component<EmptyProps, EmptyStats> {
           <p className="tw-text-lg">
             We provide a <a href="#/Map"> map </a> where you can see all the
             canteens. If you are interested, you can also go into each canteen
-            and see the details like price and location about that canteen.
+            and see the details like price and location about that canteen. Just
+            click on the canteens that are grouped by campus.
           </p>
           <h2 className="tw-my-4">Feedback & collaboration</h2>
           <p className="tw-text-lg">

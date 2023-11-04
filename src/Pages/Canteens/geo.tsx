@@ -7,7 +7,7 @@ interface EmptyProps {}
 
 interface EmptyStats {}
 
-class JUR extends React.Component<EmptyProps, EmptyStats> {
+class GEO extends React.Component<EmptyProps, EmptyStats> {
   constructor(props: EmptyProps) {
     super(props);
     this.state = {};
@@ -16,11 +16,11 @@ class JUR extends React.Component<EmptyProps, EmptyStats> {
   render() {
     return (
       <CanteenTemplate
-        canteenInfo={canteenData.KU_JUR_KANTINEN}
-        menuInfo={menuData.KU_JUR_KANTINEN}
+        canteenInfo={canteenData.KU_GEOCENTER_CITY}
+        menuInfo={menuData.KU_GEOCENTER_CITY}
       />
     );
   }
 }
 
-export default JUR;
+export default GEO;

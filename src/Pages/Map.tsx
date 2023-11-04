@@ -72,6 +72,7 @@ class Map extends React.Component<EmptyProps, EmptyStats> {
         const lat = LOCATIONS[key].Lat;
         const lon = LOCATIONS[key].Lon;
         const displayName = LOCATIONS[key].DisplayName;
+        const shortName = LOCATIONS[key].Short;
 
         let todayMenu = MENUS[key][weekDay];
         // check whether the menu is up-to-date
@@ -93,7 +94,9 @@ class Map extends React.Component<EmptyProps, EmptyStats> {
         markers.push(
           <Marker key={i} position={[lat, lon]}>
             <Popup>
-              <h5>{displayName}</h5>
+              <a href={"#/canteens/" + shortName} className="tw-text-xl">
+                {displayName}
+              </a>
               {displayedMenu}
             </Popup>
           </Marker>
@@ -107,10 +110,17 @@ class Map extends React.Component<EmptyProps, EmptyStats> {
         const lat = LOCATIONS[key].Lat;
         const lon = LOCATIONS[key].Lon;
         const displayName = LOCATIONS[key].DisplayName;
+        const shortName = LOCATIONS[key].Short;
+
         markers.push(
           <Marker key={i} position={[lat, lon]}>
             <Popup>
-              <h5>{displayName}</h5>
+              <a
+                href={"#/canteens/" + shortName}
+                className="tw-text-xl tw-my-1"
+              >
+                {displayName}
+              </a>
               <div>Enjoy your weekend!</div>
               <div>All the canteens are closed on weekends.</div>
             </Popup>

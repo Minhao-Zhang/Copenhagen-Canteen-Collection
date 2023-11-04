@@ -1,6 +1,7 @@
 {
   "Name": "GEOCENTER_CITY",
   "DisplayName": "Geo Center Kantinen",
+  "Short": "geo",
   "Lat": 55.68814,
   "Lon": 12.58178,
   "Price": "105kr/kg",

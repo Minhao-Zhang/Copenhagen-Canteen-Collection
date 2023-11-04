@@ -5,6 +5,7 @@ import Map from "../Pages/Map";
 import BIO from "../Pages/Canteens/bio";
 import FOL from "../Pages/Canteens/fol";
 import GAM from "../Pages/Canteens/gam";
+import GEO from "../Pages/Canteens/geo";
 import GIM from "../Pages/Canteens/gim";
 import GUM from "../Pages/Canteens/gum";
 import HCO from "../Pages/Canteens/hco";
@@ -44,6 +45,10 @@ class Router extends React.Component<RouterProps, RouterStates> {
       {
         path: "/canteens/gam",
         element: <GAM />,
+      },
+      {
+        path: "/canteens/geo",
+        element: <GEO />,
       },
       {
         path: "/canteens/gim",

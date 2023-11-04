@@ -1,6 +1,7 @@
 {
   "Name": "GUMLE_KANTINE",
   "DisplayName": "Gumle Kantine",
+  "Short": "gum",
   "Lat": 55.68176,
   "Lon": 12.54305,
   "Price": "UNKNOWN",
