@@ -35,6 +35,7 @@ class KUTaastrupCampusCanteen(scrapy.Spider):
             for line in result:
                 f.write(line + "\n")
 
+        print("PARSING TAASTRUP")
         # we now know the result are in the format of
         # WEEK_NUMBER
         # Mandag: DANISH_MENU
@@ -42,15 +43,17 @@ class KUTaastrupCampusCanteen(scrapy.Spider):
         # ...
         # Forbehold for ændringer
         # we parse them into json file by each day
+        try:
+            taa_dict = {}
+            taa_dict["Name"] = "TAASTRUP"
+            taa_dict["WeekNumber"] = result[0].split(" ")[-1]
+            for i in range(5):
+                taa_dict[WEEKDAYS[i]] = result[1+i*2][len(
+                    WEEKDAYS_DANISH[i])+2:] + "\n" + result[2+i*2][len(WEEKDAYS[i])+2:]
+            gum_json = json.dumps(taa_dict, ensure_ascii=False)
 
-        taa_dict = {}
-        taa_dict["Name"] = "TAASTRUP"
-        taa_dict["WeekNumber"] = result[0].split(" ")[-1]
-        for i in range(5):
-            taa_dict[WEEKDAYS[i]] = result[1+i*2][len(
-                WEEKDAYS_DANISH[i])+2:] + "\n" + result[2+i*2][len(WEEKDAYS[i])+2:]
-        gum_json = json.dumps(taa_dict, ensure_ascii=False)
-
-        # write to a file in UTF-8
-        with codecs.open(DATA_PATH + "GAMLE_TAASTRUP.json", "w", "utf-8") as f:
-            f.write(gum_json)
+            # write to a file in UTF-8
+            with codecs.open(DATA_PATH + "GAMLE_TAASTRUP.json", "w", "utf-8") as f:
+                f.write(gum_json)
+        except:
+            raise Exception("Cannot parse Taastrup")

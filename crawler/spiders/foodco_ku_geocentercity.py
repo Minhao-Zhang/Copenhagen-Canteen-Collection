@@ -42,24 +42,27 @@ class KUGeoCenterCampusCityCanteen(scrapy.Spider):
         # ...
         # so we parse them into json file by each day
         def split_and_store(result: list[str]) -> str:
-            indexes = [result.index(day) for day in WEEKDAYS]
-            result_dict = {}
-            result_dict["Name"] = "GEOCENTER_CITY"
-            # result_dict["WeekNumber"] = result[0].split(" ")[-1]
-            # this canteen does not provide week number
-            # we default this to the current week
+            try:
+                indexes = [result.index(day) for day in WEEKDAYS]
+                result_dict = {}
+                result_dict["Name"] = "GEOCENTER_CITY"
+                # result_dict["WeekNumber"] = result[0].split(" ")[-1]
+                # this canteen does not provide week number
+                # we default this to the current week
 
-            week_number = datetime.datetime.today().isocalendar()[1]
-            result_dict["WeekNumber"] = week_number
+                week_number = datetime.datetime.today().isocalendar()[1]
+                result_dict["WeekNumber"] = week_number
 
-            for i in range(len(indexes) - 1):
-                day = WEEKDAYS[i]
-                result_dict[day] = "\n".join(
-                    result[indexes[i] + 1: indexes[i + 1]])
-            result_dict[WEEKDAYS[-1]] = "\n".join(result[indexes[-1] + 1:])
-            result_json = json.dumps(result_dict, ensure_ascii=False)
+                for i in range(len(indexes) - 1):
+                    day = WEEKDAYS[i]
+                    result_dict[day] = "\n".join(
+                        result[indexes[i] + 1: indexes[i + 1]])
+                result_dict[WEEKDAYS[-1]] = "\n".join(result[indexes[-1] + 1:])
+                result_json = json.dumps(result_dict, ensure_ascii=False)
 
-            return result_json
+                return result_json
+            except:
+                raise Exception("Cannot parse GEOCENTER_CITY")
 
         geo_result = split_and_store(result)
 

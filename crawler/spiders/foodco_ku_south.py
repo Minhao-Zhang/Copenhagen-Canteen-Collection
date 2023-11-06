@@ -64,26 +64,28 @@ class KUSouthCampusCanteen(scrapy.Spider):
             for line in teo_result:
                 f.write(line + "\n")
 
-        # we now know the result of are the same and are in the format of
-        # CANTEEN_NAME
-        # WEEK_NUMBER
-        # Mandag
-        # SOME_LINES
-        # ...
-        # so we parse them into json file by each day
         def split_and_store(result: list[str], name: str) -> str:
-            indexes = [result.index(day) for day in WEEKDAYS_DANISH]
-            result_dict = {}
-            result_dict["Name"] = name
-            result_dict["WeekNumber"] = result[1].split(" ")[-1]
-            for i in range(len(indexes) - 1):
-                day = WEEKDAYS[i]
-                result_dict[day] = "\n".join(
-                    result[indexes[i] + 1: indexes[i + 1]])
-            result_dict[WEEKDAYS[-1]] = "\n".join(result[indexes[-1] + 1:])
-            result_json = json.dumps(result_dict, ensure_ascii=False)
+            print("PARSING " + name)
+            # CANTEEN_NAME
+            # WEEK_NUMBER
+            # Mandag
+            # SOME_LINES
+            # ...
+            try:
+                indexes = [result.index(day) for day in WEEKDAYS_DANISH]
+                result_dict = {}
+                result_dict["Name"] = name
+                result_dict["WeekNumber"] = result[1].split(" ")[-1]
+                for i in range(len(indexes) - 1):
+                    day = WEEKDAYS[i]
+                    result_dict[day] = "\n".join(
+                        result[indexes[i] + 1: indexes[i + 1]])
+                result_dict[WEEKDAYS[-1]] = "\n".join(result[indexes[-1] + 1:])
+                result_json = json.dumps(result_dict, ensure_ascii=False)
 
-            return result_json
+                return result_json
+            except:
+                raise Exception("Cannot parse " + name)
 
         jur_json = split_and_store(jur_result, "JUR_KANTIEN")
         hum_json = split_and_store(hum_result, "HUM_KANTIEN")

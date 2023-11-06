@@ -59,50 +59,56 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
             f.write(gim_json)
 
     def parse_gum(self, result: list[str]) -> str:
+        print("PARSING GUMLE KANTINE")
         # GUMLE KANTINE
         # WEEK_NUMBER
         # Mandag: DANISH_MENU
         # Monday: ENGLISH_MENU
         # ...
+        try:
+            result_dict = {}
+            result_dict["Name"] = "GUMLE_KANTINE"
+            result_dict["WeekNumber"] = result[1].split(" ")[-1]
+            for i in range(5):
+                result_dict[WEEKDAYS[i]] = result[2+i*2][len(
+                    WEEKDAYS_DANISH[i])+2:] + "\n" + result[3+i*2][len(WEEKDAYS[i])+2:]
+            result_json = json.dumps(result_dict, ensure_ascii=False)
 
-        result_dict = {}
-        result_dict["Name"] = "GUMLE_KANTINE"
-        result_dict["WeekNumber"] = result[1].split(" ")[-1]
-        for i in range(5):
-            result_dict[WEEKDAYS[i]] = result[2+i*2][len(
-                WEEKDAYS_DANISH[i])+2:] + "\n" + result[3+i*2][len(WEEKDAYS[i])+2:]
-        result_json = json.dumps(result_dict, ensure_ascii=False)
-
-        return result_json
+            return result_json
+        except:
+            raise Exception("Cannot parse GUMLE KANTINE")
 
     def parse_gim(self, result: list[str]) -> str:
+        print("PARSING GIMLE KANTINE")
         # GIMLE KANTINE
         # WEEK_NUMBER
         # Monday: ENGLISH_MENU
         # MAYBE_MULTIPLE_LINE
         # ...
         # Forbehold for ændringer (subject to change at the end)
+        try:
+            result_dict = {}
+            result_dict["Name"] = "GIMLE_KANTINE"
+            result_dict["WeekNumber"] = result[1].split(" ")[-1]
+            start_index = []
+            for i in range(5):
+                # find the line number if they start with a weekday
+                for j in range(len(result)):
+                    if result[j].startswith(WEEKDAYS_SHORT[i]):
+                        start_index.append(j)
+                        break
+            start_index.append(len(result) - 1)
+            for i in range(5):
+                temp = ""
+                for j in range(start_index[i], start_index[i+1]):
+                    if result[j].startswith(WEEKDAYS_SHORT[i]):
+                        temp += result[j][len(WEEKDAYS[i])+2:] + "\n"
+                    else:
+                        temp += result[j] + "\n"
+                temp = temp[:len(temp)-1]
+                result_dict[WEEKDAYS[i]] = temp
+            result_json = json.dumps(result_dict, ensure_ascii=False)
 
-        result_dict = {}
-        result_dict["Name"] = "GIMLE_KANTINE"
-        result_dict["WeekNumber"] = result[1].split(" ")[-1]
-        start_index = []
-        for i in range(5):
-            # find the line number if they start with a weekday
-            for j in range(len(result)):
-                if result[j].startswith(WEEKDAYS_SHORT[i]):
-                    start_index.append(j)
-                    break
-        start_index.append(len(result) - 1)
-        for i in range(5):
-            temp = ""
-            for j in range(start_index[i], start_index[i+1]):
-                if result[j].startswith(WEEKDAYS_SHORT[i]):
-                    temp += result[j][len(WEEKDAYS[i])+2:] + "\n"
-                else:
-                    temp += result[j] + "\n"
-            temp = temp[:len(temp)-1]
-            result_dict[WEEKDAYS[i]] = temp
-        result_json = json.dumps(result_dict, ensure_ascii=False)
-
-        return result_json
+            return result_json
+        except:
+            raise Exception("Cannot parse GIMLE KANTINE")
