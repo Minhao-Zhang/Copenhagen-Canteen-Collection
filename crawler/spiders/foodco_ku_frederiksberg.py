@@ -91,6 +91,13 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
             result_dict["Name"] = "GIMLE_KANTINE"
             result_dict["WeekNumber"] = result[1].split(" ")[-1]
             start_index = []
+
+            # bug on week 47, Tuesday is spelled as tuesday
+            # replace all tuesday with Tuesday
+            for l in range(len(result)):
+                if "tuesday" in result[l]:
+                    result[l] = result[l].replace("tuesday", "Tuesday")
+
             for i in range(5):
                 # find the line number if they start with a weekday
                 for j in range(len(result)):

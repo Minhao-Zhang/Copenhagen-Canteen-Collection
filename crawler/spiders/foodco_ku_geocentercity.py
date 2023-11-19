@@ -1,7 +1,6 @@
 import codecs
 import datetime
 import json
-import sys
 import scrapy
 
 DATA_PATH = "data/KU_"
