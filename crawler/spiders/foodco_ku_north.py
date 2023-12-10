@@ -7,7 +7,7 @@ WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 WEEKDAYS_SHORT = ["Mo", "Tu", "We", "Th", "Fr"]
 WEEKDAYS_DANISH = ["MANDAG", "TIRSDAG", "ONSDAG", "TORSDAG", "FREDAG"]
 WEEKDAYS_DANISH_LOW = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag"]
-WEEKDAYS_DANISH_SHORT = ["Man", "Tir", "Ons", "Tor", "Fre"]
+WEEKDAYS_DANISH_SHORT = ["man", "tir", "ons", "tor", "fre"]
 
 
 class KUNorthCampusCanteen(scrapy.Spider):
@@ -111,7 +111,7 @@ class KUNorthCampusCanteen(scrapy.Spider):
         print("PARSING HCO RESULT 2")
         # HCØ KANTINEN
         # WEEK_NUMBER
-        # Mandag/monday
+        # Mandag/Monday
         # SOME_TEXT
         # ...
         # Tirsdag/Tuesday
@@ -124,7 +124,7 @@ class KUNorthCampusCanteen(scrapy.Spider):
             for i in range(5):
                 # find the line number if they start with a weekday
                 for j in range(len(result)):
-                    if result[j].startswith(WEEKDAYS_DANISH_SHORT[i]):
+                    if result[j].lower().startswith(WEEKDAYS_DANISH_SHORT[i]):
                         start_index.append(j)
                         break
             start_index.append(len(result) - 1)
