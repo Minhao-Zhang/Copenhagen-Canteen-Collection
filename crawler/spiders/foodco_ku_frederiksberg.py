@@ -50,7 +50,7 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
                 f.write(line + "\n")
 
         gum_json = self.parse_gum(gum_result)
-        gim_json = self.parse_gim(gim_result)
+        gim_json = self.parse_gim_1(gim_result)
 
         # store the json file
         with codecs.open(DATA_PATH + "GUMLE_KANTINE.json", "w", "utf-8") as f:
@@ -78,8 +78,8 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
         except:
             raise Exception("Cannot parse GUMLE KANTINE")
 
-    def parse_gim(self, result: list[str]) -> str:
-        print("PARSING GIMLE KANTINE")
+    def parse_gim_1(self, result: list[str]) -> str:
+        print("PARSING GIMLE KANTINE 1")
         # GIMLE KANTINE
         # WEEK_NUMBER
         # Monday: ENGLISH_MENU
@@ -102,6 +102,42 @@ class KUFrederiksbergCampusCanteen(scrapy.Spider):
                 # find the line number if they start with a weekday
                 for j in range(len(result)):
                     if result[j].startswith(WEEKDAYS_SHORT[i]):
+                        start_index.append(j)
+                        break
+            start_index.append(len(result) - 1)
+            for i in range(5):
+                temp = ""
+                for j in range(start_index[i], start_index[i+1]):
+                    if result[j].startswith(WEEKDAYS_SHORT[i]):
+                        temp += result[j][len(WEEKDAYS[i])+2:] + "\n"
+                    else:
+                        temp += result[j] + "\n"
+                temp = temp[:len(temp)-1]
+                result_dict[WEEKDAYS[i]] = temp
+            result_json = json.dumps(result_dict, ensure_ascii=False)
+
+            return result_json
+        except:
+            return self.parse_gim_2(result)
+
+    def parse_gim_2(self, result: list[str]) -> str:
+        print("PARSING GIMLE KANTINE 1")
+        # GIMLE KANTINE
+        # WEEK_NUMBER
+        # Man.
+        # MAYBE_MULTIPLE_LINE
+        # ...
+
+        try:
+            result_dict = {}
+            result_dict["Name"] = "GIMLE_KANTINE"
+            result_dict["WeekNumber"] = result[1].split(" ")[-1]
+            start_index = []
+
+            for i in range(5):
+                # find the line number if they start with a weekday
+                for j in range(len(result)):
+                    if result[j].startswith(WEEKDAYS_DANISH_SHORT[i]):
                         start_index.append(j)
                         break
             start_index.append(len(result) - 1)
