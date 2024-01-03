@@ -6,6 +6,10 @@ A small program that organizes most of the university canteen menu information f
 
 I am actively looking for collaborations. If you want to join this project, please contact me at [my email](mailto:z.minhao.01+coding@gmail.com) or create a pull request!
 
+## Discontinuing this product
+
+Due to the website format kept changing with many many typos every single week, parsing them using traditional methods is not possible. I will pause the maintainance of this project until I find a better way to parse the website.
+
 ## TODO
 
 - [ ] Build a website that displays the menu information
